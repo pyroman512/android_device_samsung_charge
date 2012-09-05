@@ -192,6 +192,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
+# enable repeatable keys in cwm
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.cwm.enable_key_repeat=true
+
 include frameworks/native/build/phone-hdpi-512-dalvik-heap.mk
 
 # copy the filesystem converter
