@@ -82,17 +82,17 @@ PRODUCT_PACKAGES += \
 
 # These are the OpenMAX IL configuration files
 PRODUCT_COPY_FILES += \
-    device/samsung/charge/sec_mm/sec_omx/sec_omx_core/secomxregistry:system/etc/secomxregistry \
+    hardware/samsung/exynos3/s5pc110/sec_mm/sec_omx/sec_omx_core/secomxregistry:system/etc/secomxregistry \
     device/samsung/charge/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/samsung/charge/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml
 
 # These are the OpenMAX IL modules
 PRODUCT_PACKAGES += \
-    libSEC_OMX_Core.s5pc110 \
-    libOMX.SEC.AVC.Decoder.s5pc110 \
-    libOMX.SEC.M4V.Decoder.s5pc110 \
-    libOMX.SEC.M4V.Encoder.s5pc110 \
-    libOMX.SEC.AVC.Encoder.s5pc110
+    libSEC_OMX_Core \
+    libOMX.SEC.AVC.Decoder \
+    libOMX.SEC.M4V.Decoder \
+    libOMX.SEC.M4V.Encoder \
+    libOMX.SEC.AVC.Encoder
 
 # audio libs
 PRODUCT_PACKAGES += \
@@ -153,7 +153,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     net.interfaces.defaultroute=cdma \
     ro.telephony.ril_class=SamsungChargeRIL \
     ro.telephony.ril.v3=datacall \
-    mobiledata.interfaces=eth0,hrdp0,pdp0,pdpbr0,svnet0
+    mobiledata.interfaces=eth0,hrdp0,pdp0,pdpbr0,ppp0,svnet0
 
 # These are the hardware-specific settings that are stored in system properties.
 # Note that the only such settings should be the ones that are too low-level to
