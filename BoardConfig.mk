@@ -85,6 +85,7 @@ BOARD_ALLOW_EGL_HIBERNATION := true
 BOARD_EGL_CFG := device/samsung/charge/prebuilt/lib/egl/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_USE_SKIA_LCDTEXT := true
+BOARD_USES_SKTEXTBOX := true
 
 # vibrator
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/samsung/charge/vibrator/tspdrv.c
