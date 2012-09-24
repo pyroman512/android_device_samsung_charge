@@ -105,8 +105,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     hwcomposer.s5pc110 \
     libs3cjpeg \
-    libstagefrighthw
-#    camera.s5pc110 \
+    libstagefrighthw \
+    camera.s5pc110
 
 # lights
 PRODUCT_PACKAGES += \
@@ -115,7 +115,12 @@ PRODUCT_PACKAGES += \
 # Device-specific packages
 PRODUCT_PACKAGES += \
     Smdkc110Parts \
-    tvouthack
+    tvouthack	
+	
+# Charger
+PRODUCT_PACKAGES += \
+  charger \
+  charger_res_images
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -149,11 +154,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.cdma.otaspnumschema=SELC,3,00,07,80,87,88,99 \
     net.cdma.pppd.authtype=require-chap \
     net.cdma.pppd.user=user[SPACE]VerizonWireless \
+    net.cdma.datalinkinterface=/dev/ttyCDMA0 \
     net.connectivity.type=CDMA1 \
     net.interfaces.defaultroute=cdma \
     ro.telephony.ril_class=SamsungChargeRIL \
     ro.telephony.ril.v3=datacall \
-    mobiledata.interfaces=eth0,hrdp0,pdp0,pdpbr0,ppp0,svnet0
+    mobiledata.interfaces=eth0,hrdp0,pdp0,pdpbr0,svnet0
 
 # These are the hardware-specific settings that are stored in system properties.
 # Note that the only such settings should be the ones that are too low-level to
