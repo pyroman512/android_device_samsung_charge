@@ -2,6 +2,7 @@
 **
 ** Copyright 2008, The Android Open Source Project
 ** Copyright 2010, Samsung Electronics Co. LTD
+** Copyright 2011, The CyanogenMod Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -43,11 +44,12 @@
 
 namespace android {
 
-//#define ENABLE_ESD_PREVIEW_CHECK
+// Not supported by CE147
+// #define ENABLE_ESD_PREVIEW_CHECK
 
 #if defined(LOG_NDEBUG) && LOG_NDEBUG == 0
-#define LOG_CAMERA LOGD
-#define LOG_CAMERA_PREVIEW LOGD
+#define LOG_CAMERA ALOGD
+#define LOG_CAMERA_PREVIEW ALOGD
 
 #define LOG_TIME_DEFINE(n) \
     struct timeval time_start_##n, time_stop_##n; unsigned long log_time_##n = 0;
@@ -82,8 +84,8 @@ namespace android {
 
 #define S5K4ECGX_PREVIEW_WIDTH            1280
 #define S5K4ECGX_PREVIEW_HEIGHT           720
-#define S5K4ECGX_SNAPSHOT_WIDTH           3264
-#define S5K4ECGX_SNAPSHOT_HEIGHT          2448
+#define S5K4ECGX_SNAPSHOT_WIDTH           2560
+#define S5K4ECGX_SNAPSHOT_HEIGHT          1920
 
 #define S5K4ECGX_POSTVIEW_WIDTH           640
 #define S5K4ECGX_POSTVIEW_WIDE_WIDTH      800
@@ -145,7 +147,13 @@ namespace android {
 
 #define BPP             2
 #define MIN(x, y)       (((x) < (y)) ? (x) : (y))
-#define MAX_BUFFERS     9 // 11
+#define MAX_BUFFERS     8
+
+#define FIRST_AF_SEARCH_COUNT 600
+#define AF_PROGRESS 0x05
+#define AF_SUCCESS 0x02
+#define AF_DELAY 10000
+
 /*
  * V 4 L 2   F I M C   E X T E N S I O N S
  *

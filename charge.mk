@@ -50,14 +50,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/samsung/charge/prebuilt/etc/vold.fstab:system/etc/vold.fstab
 
-# apn config
-PRODUCT_COPY_FILES += \
-    device/sample/etc/apns-conf_verizon.xml:system/etc/apns-conf.xml
-
-# ppp
-PRODUCT_COPY_FILES += \
-    device/samsung/charge/prebuilt/etc/ppp/ip-up:system/etc/ppp/ip-up
-
 # Keylayout / Keychars
 PRODUCT_COPY_FILES += \
     device/samsung/charge/prebuilt/usr/keylayout/s3c-keypad.kl:system/usr/keylayout/s3c-keypad.kl \
@@ -65,10 +57,6 @@ PRODUCT_COPY_FILES += \
     device/samsung/charge/prebuilt/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
     device/samsung/charge/prebuilt/usr/keylayout/Broadcom_Bluetooth_HID.kl:system/usr/keylayout/Broadcom_Bluetooth_HID.kl \
     device/samsung/charge/prebuilt/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl
-
-# bluetooth
-PRODUCT_COPY_FILES += \
-    device/samsung/charge/prebuilt/etc/bluetooth/main.conf:system/etc/bluetooth/main.conf
 
 # Generated kcm keymaps
 PRODUCT_PACKAGES := \
@@ -124,7 +112,7 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    Stk
+    Stk \
 
 # Install the features available on this device.
 PRODUCT_COPY_FILES += \
@@ -158,9 +146,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     net.connectivity.type=CDMA1 \
     net.interfaces.defaultroute=cdma \
     ro.telephony.ril_class=SamsungChargeRIL \
-    ro.telephony.ril.v3=datacall \
-    mobiledata.interfaces=eth0,hrdp0,pdp0,pdpbr0,svnet0
+    mobiledata.interfaces=eth0,ppp0,hrdp0,pdp0,pdpbr0,svnet0,hrdp1,pdp1,pdpbr1,hrdp1,pdp2,pdpbr2,hrdp3,pdp3,pdpbr3 \
+    net.cdma.ppp.interface=ppp0
 
+#    ro.telephony.ril.v3=datacall \
+     #persist.radio.reset_on_switch=true \
 # These are the hardware-specific settings that are stored in system properties.
 # Note that the only such settings should be the ones that are too low-level to
 # be reachable from resources or other mechanisms.
@@ -194,6 +184,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # disable usb debugging notif
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.adb.notify=0
+	
+# Enable HighEnd Graphics
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.override.highendgfx=1
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise

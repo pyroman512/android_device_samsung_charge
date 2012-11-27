@@ -35,6 +35,7 @@ BOARD_V4L2_DEVICE := /dev/video1
 BOARD_CAMERA_DEVICE := /dev/video0
 BOARD_SECOND_CAMERA_DEVICE := /dev/video2
 BOARD_CAMERA_HAVE_FLASH := true
+BOARD_CAMERA_HAVE_ISO := true
 
 TARGET_NO_BOOTLOADER := true
 TARGET_BOOTLOADER_BOARD_NAME := smdkc110
@@ -48,6 +49,7 @@ TARGET_BOARD_PLATFORM_GPU := POWERVR_SGX540_120
 # ARMv7-A Cortex-A8 architecture
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
@@ -79,6 +81,8 @@ BOARD_MTP_DEVICE := "/dev/usb_mtp_gadget"
 # Bluetooth related defines
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_HAVE_BLUETOOTH := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/charge/bluetooth
+BOARD_BLUETOOTH_LIBBT_VNDCFG := device/samsung/charge/libbt_vndcfg.txt
 
 # egl shit
 TARGET_DISABLE_TRIPLE_BUFFERING := true

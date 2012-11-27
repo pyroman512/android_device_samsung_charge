@@ -5,6 +5,8 @@ TARGET_BOOTANIMATION_NAME := vertical-480x800
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/cm/config/cdma.mk)
+
 
 # Inherit device configuration
 $(call inherit-product, device/samsung/charge/full_charge.mk)
