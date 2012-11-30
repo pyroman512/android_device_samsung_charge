@@ -112,7 +112,13 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    Stk \
+    Stk
+
+# WIFI
+PRODUCT_PACKAGES += \
+    libnetcmdiface \
+    fw_bcm4329_apsta.bin \
+    fw_bcm4329.bin
 
 # Install the features available on this device.
 PRODUCT_COPY_FILES += \

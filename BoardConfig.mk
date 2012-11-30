@@ -70,9 +70,9 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
 BOARD_WLAN_DEVICE := bcm4329
 WIFI_DRIVER_MODULE_PATH	:= "/system/lib/modules/bcm4329.ko"
-WIFI_DRIVER_MODULE_ARG	:= "firmware_path=/vendor/firmware/fw_bcm4329.bin nvram_path=/vendor/firmware/nvram_net.txt"
-WIFI_DRIVER_FW_PATH_AP	:= "/vendor/firmware/fw_bcm4329_apsta.bin"
-WIFI_DRIVER_FW_PATH_STA	:= "/vendor/firmware/fw_bcm4329.bin"
+WIFI_DRIVER_MODULE_ARG	:= "firmware_path=/system/vendor/firmware/fw_bcm4329.bin nvram_path=/system/vendor/firmware/nvram_net.txt"
+WIFI_DRIVER_FW_PATH_AP	:= "/system/vendor/firmware/fw_bcm4329_apsta.bin"
+WIFI_DRIVER_FW_PATH_STA	:= "/system/vendor/firmware/fw_bcm4329.bin"
 WIFI_DRIVER_MODULE_NAME	:= "bcm4329"
 
 # fix mtp
