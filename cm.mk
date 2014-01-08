@@ -1,11 +1,12 @@
-## Specify phone tech before including full_phone
-$(call inherit-product, vendor/cm/config/cdma.mk)
-
 # Release name
 PRODUCT_RELEASE_NAME := Charge
 
+TARGET_BOOTANIMATION_NAME := vertical-480x800
+
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/cm/config/cdma.mk)
+
 
 # Inherit device configuration
 $(call inherit-product, device/samsung/charge/full_charge.mk)
@@ -15,10 +16,6 @@ PRODUCT_DEVICE := charge
 PRODUCT_NAME := cm_charge
 PRODUCT_BRAND := samsung
 PRODUCT_MODEL := SCH-I510
-
-# Bootanimation
-TARGET_SCREEN_HEIGHT := 800
-TARGET_SCREEN_WIDTH := 480
 
 #Set build fingerprint / ID / Product Name ect.
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=SCH-I510 TARGET_DEVICE=SCH-I510 BUILD_FINGERPRINT=verizon/SCH-I510/SCH-I510:2.3.6/GINGERBREAD/FP1:user/release-keys PRIVATE_BUILD_DESC="SCH-I510-user 2.3.6 GINGERBREAD FP1 release-keys"
