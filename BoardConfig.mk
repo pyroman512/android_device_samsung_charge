@@ -4,7 +4,7 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+# http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -51,6 +51,8 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_ARCH_VARIANT_CPU := cortex-a8
+TARGET_CPU_VARIANT := cortex-a8
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 ARCH_ARM_HAVE_TLS_REGISTER := true
@@ -69,11 +71,11 @@ BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
 BOARD_WLAN_DEVICE := bcm4329
-WIFI_DRIVER_MODULE_PATH	:= "/system/lib/modules/bcm4329.ko"
-WIFI_DRIVER_MODULE_ARG	:= "firmware_path=/system/vendor/firmware/fw_bcm4329.bin nvram_path=/system/vendor/firmware/nvram_net.txt"
-WIFI_DRIVER_FW_PATH_AP	:= "/system/vendor/firmware/fw_bcm4329_apsta.bin"
-WIFI_DRIVER_FW_PATH_STA	:= "/system/vendor/firmware/fw_bcm4329.bin"
-WIFI_DRIVER_MODULE_NAME	:= "bcm4329"
+WIFI_DRIVER_MODULE_PATH        := "/system/lib/modules/bcm4329.ko"
+WIFI_DRIVER_MODULE_ARG        := "firmware_path=/system/vendor/firmware/fw_bcm4329.bin nvram_path=/system/vendor/firmware/nvram_net.txt"
+WIFI_DRIVER_FW_PATH_AP        := "/system/vendor/firmware/fw_bcm4329_apsta.bin"
+WIFI_DRIVER_FW_PATH_STA        := "/system/vendor/firmware/fw_bcm4329.bin"
+WIFI_DRIVER_MODULE_NAME        := "bcm4329"
 
 # fix mtp
 BOARD_MTP_DEVICE := "/dev/usb_mtp_gadget"
@@ -85,8 +87,6 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/charge/bluetooth
 BOARD_BLUETOOTH_LIBBT_VNDCFG := device/samsung/charge/libbt_vndcfg.txt
 
 # egl shit
-TARGET_DISABLE_TRIPLE_BUFFERING := true
-BOARD_ALLOW_EGL_HIBERNATION := true
 BOARD_EGL_CFG := device/samsung/charge/prebuilt/lib/egl/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_USE_SKIA_LCDTEXT := true
@@ -127,9 +127,12 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 # Kernel/recovery devices
 BOARD_BML_BOOT := "/dev/block/bml8"
 BOARD_BML_RECOVERY := "/dev/block/bml9"
+
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/charge/recovery/graphics.c
 BOARD_CUSTOM_BOOTIMG_MK := device/samsung/charge/shbootimg.mk
 TARGET_RECOVERY_PRE_COMMAND := "echo 1 > /cache/.startrecovery; sync;"
+TARGET_RECOVERY_FSTAB := device/samsung/charge/fstab.charge
+RECOVERY_FSTAB_VERSION := 2
 
 TARGET_OTA_ASSERT_DEVICE := charge,SCH-I510

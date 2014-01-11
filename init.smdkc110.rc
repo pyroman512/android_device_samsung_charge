@@ -14,7 +14,7 @@ loglevel 9
     chmod 0771 /efs
 
     # Data Traffic
-    mkdir /mnt/radio 0775 radio radio 
+    mkdir /mnt/radio 0775 radio radio
     mount tmpfs tmpfs /mnt/radio
     write /mnt/radio/lte_traffic 0
     write /mnt/radio/3g_traffic 0
@@ -37,7 +37,7 @@ loglevel 9
     mkdir /mnt/.lfs 0755 root root
     mount j4fs /dev/block/stl7 /mnt/.lfs
     insmod /lib/modules/param.ko
-	
+        
     stop ril-daemon
 
 on boot
@@ -55,21 +55,14 @@ on boot
 # fake some battery state
     setprop status.battery.state Slow
     setprop status.battery.level 5
-    setprop status.battery.level_raw  50
+    setprop status.battery.level_raw 50
     setprop status.battery.level_scale 9
 
 # phone
     setprop ro.telephony.call_ring.multiple 0
 
 on fs
-# system
-    mount ext4 /dev/block/stl10 /system
 
-# data
-    mount ext4 /dev/block/mmcblk0p1 /data wait nosuid noatime nodiratime noauto_da_alloc
-
-# cache
-    mount ext4 /dev/block/mmcblk0p3 /cache wait nosuid noatime nodiratime noauto_da_alloc
 
 # efs
     mount rfs /dev/block/stl3 /efs nosuid nodev check=no
@@ -116,14 +109,14 @@ on post-fs
     insmod /system/lib/modules/svnet.ko
     insmod /system/lib/modules/modemctl.ko
     insmod /system/lib/modules/dpram.ko
-	
+        
 # create log system
     mkdir /data/log 0775 system log
     chown system log /data/log
 
     chmod 0775 /data/log
 
-# DivX DRM	
+# DivX DRM        
     mkdir /efs/.files 0775
     mkdir /efs/.files/.dx1 0775
     mkdir /efs/.files/.dm33 0775
@@ -225,16 +218,16 @@ on post-fs
     chown system system /sys/devices/virtual/K3G_GYRO-dev/k3g/gyro_selftest
     chown system system /sys/devices/virtual/sec/gsensorcal/calibration
 
- #change permissions for modem 
-    chown root radio /sys/class/modemctl/lte/control 
-    chown root radio /sys/class/net/svnet0/suspend 
+ #change permissions for modem
+    chown root radio /sys/class/modemctl/lte/control
+    chown root radio /sys/class/net/svnet0/suspend
     chown root radio /sys/class/net/svnet0/resume
     chown root radio /sys/class/onedram/onedram/debug
     chown radio system /sys/class/net/svnet0/waketime
-	chown radio system /sys/class/net/svnet0/pdp
-    chown radio system /sys/class/net/svnet0/pdp/activate 
+        chown radio system /sys/class/net/svnet0/pdp
+    chown radio system /sys/class/net/svnet0/pdp/activate
     chown radio system /sys/class/net/svnet0/pdp/deactivate
-    chown radio system /sys/class/net/svnet0/pdp/suspend 
+    chown radio system /sys/class/net/svnet0/pdp/suspend
     chown radio system /sys/class/net/svnet0/pdp/resume
     #change permissions for USB
     chown radio system /sys/class/sec/switch/usb_sel
@@ -289,21 +282,21 @@ on post-fs
     chown radio system /sys/class/sec/qt602240_noise_test/set_delta3
     chown radio system /sys/class/sec/qt602240_noise_test/set_refer4
     chown radio system /sys/class/sec/qt602240_noise_test/set_delta4
-    chown radio system /sys/class/sec/qt602240_noise_test/set_referminmax 
-    chown radio system /sys/class/sec/qt602240_noise_test/set_deltaminmax 
-    chown radio system /sys/class/sec/qt602240_noise_test/set_threshould 
-    chown radio system /sys/class/sec/qt602240_atcom_test/set_qt_update 
-    chown radio system /sys/class/sec/qt602240_atcom_test/set_qt_firm_version 
-    chown radio system /sys/class/sec/qt602240_atcom_test/set_qt_firm_status 
+    chown radio system /sys/class/sec/qt602240_noise_test/set_referminmax
+    chown radio system /sys/class/sec/qt602240_noise_test/set_deltaminmax
+    chown radio system /sys/class/sec/qt602240_noise_test/set_threshould
+    chown radio system /sys/class/sec/qt602240_atcom_test/set_qt_update
+    chown radio system /sys/class/sec/qt602240_atcom_test/set_qt_firm_version
+    chown radio system /sys/class/sec/qt602240_atcom_test/set_qt_firm_status
     chown radio system /sys/class/sec/qt602240_atcom_test/set_qt_firm_version_read
     chown radio system /sys/class/touch/switch/set_power
     chown radio system /sys/class/touch/switch/set_acquisition
-    chown radio system /sys/class/touch/switch/set_touchscreen 
-    chown radio system /sys/class/touch/switch/set_keyarray 
+    chown radio system /sys/class/touch/switch/set_touchscreen
+    chown radio system /sys/class/touch/switch/set_keyarray
     chown radio system /sys/class/touch/switch/set_total
     chown radio system /sys/class/touch/switch/set_write
     chown radio system /sys/class/touch/switch/set_noise
-    chown radio system /sys/class/touch/switch/set_grip  
+    chown radio system /sys/class/touch/switch/set_grip
     chown radio system /sys/class/touch/qt_stylus/config_mode
 
  #change permissions for touchkey
@@ -328,33 +321,33 @@ on post-fs
 # for datarouter
     chown system system /dev/ttyGS0
     chown system system /dev/dun
-# +++++++++++++++++++++++++++++++++++++++++++      
-# for tethering 
+# +++++++++++++++++++++++++++++++++++++++++++
+# for tethering
         chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 # +++++++++++++++++++++++++++++++++++++++++++
 
 # Samsung USB Mode : system properties are linked with sysfs
 # write /sys/class/sec/switch/UsbMenuSel 0
 on property:persist.service.usb.setting=0
-	write /sys/devices/platform/android_usb/UsbMenuSel 0
+        write /sys/devices/platform/android_usb/UsbMenuSel 0
 on property:persist.service.usb.setting=1
-	write /sys/devices/platform/android_usb/UsbMenuSel 1
+        write /sys/devices/platform/android_usb/UsbMenuSel 1
 on property:persist.service.usb.setting=2
-	write /sys/devices/platform/android_usb/UsbMenuSel 2
+        write /sys/devices/platform/android_usb/UsbMenuSel 2
 on property:persist.service.usb.setting=3
-	write /sys/devices/platform/android_usb/UsbMenuSel 3
+        write /sys/devices/platform/android_usb/UsbMenuSel 3
 on property:persist.service.usb.setting=4
-	write /sys/devices/platform/android_usb/UsbMenuSel 4
+        write /sys/devices/platform/android_usb/UsbMenuSel 4
 
 on post-fs-data
 #pgps daemon
     mkdir /data/rxn 0771 system system
     chown system system /data/rxn
-    chmod 0771 /data/rxn 
+    chmod 0771 /data/rxn
     chmod 0777 /system/etc/cellcache.db
-	
-	chmod 0777 /dev/block/bml12
-	chmod 0777 /dev/nvs
+        
+        chmod 0777 /dev/block/bml12
+        chmod 0777 /dev/nvs
 
 # create data/gps for GPS demon
     mkdir /data/gps 771 gps system
@@ -409,12 +402,12 @@ service iprenew_bnep0 /system/bin/dhcpcd -n
     oneshot
 
 #service hciattach /system/bin/brcm_patchram_plus --enable_hci --baudrate 3000000 \
-#    --patchram /system/vendor/firmware/bcm4329.hcd /dev/s3c2410_serial0
-#    class main
-#    user bluetooth
-#    group bluetooth net_bt_admin
-#    disabled
-#    oneshot
+# --patchram /system/vendor/firmware/bcm4329.hcd /dev/s3c2410_serial0
+# class main
+# user bluetooth
+# group bluetooth net_bt_admin
+# disabled
+# oneshot
 
 service ril-daemon1 /system/bin/rild -l /system/lib/libsec-ril40.so -s rildext
     class main
@@ -431,16 +424,16 @@ service ril-daemon2 /system/bin/rild -l /system/lib/libsec-ril40-cdma.so -s rild
    group radio cache inet misc audio log
    
 service DR-deamon /system/bin/drexe
-	class main
+        class main
     user root
-    group system radio inet net_raw 
+    group system radio inet net_raw
 
 #service pppd_cdma /system/bin/pppd_runner
-#   class main
-#   user root
-#   group radio cache inet misc system
-#   disabled
-#   oneshot
+# class main
+# user root
+# group radio cache inet misc system
+# disabled
+# oneshot
 
 service orientationd /system/bin/orientationd
     class late_start
@@ -468,8 +461,8 @@ service tvouthack /system/bin/tvouthack
     disabled
 
 #on property:ril.cdma.data_state=1
-#  restart pppd_cdma
+# restart pppd_cdma
 
 #on property:ril.cdma.data_state=0
-#  stop pppd_cdma
+# stop pppd_cdma
 
